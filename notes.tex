@@ -8,6 +8,9 @@
 
 \newcommand{\cat}{\mathbb{C}}
 \newcommand{\op}{{op}}
+
+\newcommand{\bone}{\boldsymbol{1}}
+\newcommand{\then}{\mathbin{\Longrightarrow}}
 \begin{document}
 
 \maketitle
@@ -65,5 +68,102 @@ By Lambek's Theorem, $F(X) \simeq X$.
 For any polynomial $P(X)$ in $X$, we get $P(F(X)) \simeq P(X)$.
 
 Relate this to the notion of strong isomorphism.
+
+\section{2023.08.10}
+
+\subsection*{Functors}
+Let $H(X) = 1 + X + X^3$.
+
+Let $N$ be the initial algebra of $H$, so that $N \simeq H(N)$.
+
+Let $B(X) = 1 + 2X$.
+
+Let $S$ be the initial algebra of $B$, so that $S \simeq B(S)$.
+
+Is $B$ a ``factor'' of $H$?
+
+To compare the them, try to put an $B$-algebra on... $N$? Doesn't work.
+
+But on $N^3$ works!
+
+\section{2023.08.16}
+
+\subsection{Main conjecture}
+
+
+\subsection{Conjecture}
+
+The algebraic datatype $X = P(X)$ includes infinite trees only if it does NOT contain
+a positive integer root.
+
+\textbf{Example.}
+$F(X) = X^2-4X+1$.  To have $F(X)=X$, we expect the roots to be $X = 4$ and $X = 1$.
+
+Applying the substitution $X = Y+1$, we get
+\begin{align*}
+  Y+1
+  &= Y^2 + 2Y + 1 - 4Y-4 + 4\\
+  Y &= Y^2-2Y
+\end{align*}
+
+The initial algebra for $Y \mapsto Y^2-2Y$ is $Y=\emptyset$,
+which suggests the initial algebra for $F(X)$ is also $X = \bone$.
+
+Setting instead $X = Z + 4$, we get
+\[ Z+4 = \cdots = Z^2 + 4Z \]
+
+Generally, whenever we set $X = Y + k$,
+where $k$ is a root of the polynomial $F(X)$, then this will cancel out the constants,
+leaving out a functor whose initial algebra is the empty set.
+
+\subsection{Observation about $B(X) = 2X+1$}
+
+\begin{align*}
+  X &= 2X + 1\\
+  X - 1 &= 2X\\
+  X &= Y+1\\
+  Y+1-1 &= 2Y + 2\\
+  Y &= 2Y + 2
+\end{align*}
+
+\subsection{Key Question}
+
+What is the notion of a \emph{least} fixed point/\emph{initial} algebra for
+a (system of) equation(s) in which \emph{both sides} are polynomials.
+
+(This is equivalent to admitting negative coefficients.)
+
+\subsection{Another example}
+\begin{align*}
+  X &= X^2 - 4X + 4\\
+  X &= 5 + P\\
+  5+P &= \cdots \\
+  P &= P^2 + 6P + 4
+\end{align*}
+
+\subsection{Open questions}
+
+\begin{enumerate}
+  \item The following rule is obviously sound:
+  \[ X+1 = Y+1 \then X=Y \]
+  How constructive is this principle?
+  Do we need to decide equality on both $X$ and $Y$ to exhibit the
+  isomorphism on the right in terms of the one on the left?
+
+  \textbf{Answer.}
+  Always solvable.  Given $i : X+1 \to Y+1$, define $i^! :X \to Y$ as follows.
+  Given $x$, consider $X \mapsto X+1 \mapsto Y+1$, can check whether the output is in $1$, and if so,
+  apply $i$ to $()$.  Same in the other direction.
+
+  \item What does it mean for an isomorphism from $X$ to $P(X)$, where $P(X)$
+  is a polynomial, to describe an ADT, when $P(X)$ has a specific root,
+  e.g., $i$, $-i$, $1$, $-1$, $0$, $2$, $-\pi^2$, $\frac{1}{2}$, $\sqrt(2)$, etc.
+
+  What properties does possession of a particular root imply for a given ADT?
+
+  \item Generalize all of the above to having arbitrary ADTs as coefficients
+  in the polynomial (defining the functor).
+
+\end{enumerate}
 
 \end{document}
