@@ -1,8 +1,8 @@
 import re
 def main():
-    diff = [-1, -2, -1]
-    poly = [0, 1, 0, 0, 0]
-    last = poly
+    diff = [1, 2, 1]
+    poly = [0, 1, 0, 0, 0, 0]
+    last = []
     with open("poly_log.txt", "w") as log:
         while True:
             if poly != last: log.write(" | ".join(map(lambda x: f"{x:3d}", poly)) + "\n")
@@ -18,11 +18,11 @@ def step(diff, poly, start_x=1,lim=1):
     while re.match("-?\d+$", n) is None:
         n = input(": ")
         if n.lower() in ('q', 'quit'): return "break"
-    n = int(n)
-    if n < 0:
-        neg = True
-        n = abs(n)
-    if n < start_x or (not neg and poly[n] == 0):
+    n = re.match("(-?)(\d+)$", n)
+    neg = bool(n.groups()[0])
+    n = int(n.groups()[1])
+    if n >= len(poly): return
+    if n < start_x:# or poly[n] == 0:
         return
     if poly[n] < 0:
         neg = not neg
