@@ -1,0 +1,7 @@
+data FX = BNode (FX) (FX) | UNode1 (FX) | UNode2 (FX) | Leaf
+
+type Y = (FX, FX)
+
+iso :: Maybe (Either (Y,Y) (Bool, Y)) -> Y
+
+iso Y = 
