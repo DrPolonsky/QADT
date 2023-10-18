@@ -166,4 +166,119 @@ a (system of) equation(s) in which \emph{both sides} are polynomials.
 
 \end{enumerate}
 
+\section{2023.08.16-2023.10.16}
+
+\subsection{Strong Isomorphisms}
+
+\textbf{Conjecture.}
+If X=F(X) for some polynomial functor F, and some set
+ X, then this will imply an isomorphism between Q1(X) and Q2(X), both of
+ which are polynomial functors, given that the roots of X=F(X) are a
+ sub-multiset of the roots of Q1(X)=Q2(X).
+
+\textbf{Note: }
+ This only appears to apply when F is a polynomial functor of degree
+ greater than or equal to 2 and when F has a non-zero constant term.
+
+ This phenomenon stems from the fact that using the isomorphism between
+  X and F(X), one can "add zero roots" to the polynomial.  When combined with the idea that X=F(X)=P(X) + X implies X=n*P(X) + X,
+  one can generate an isomorphism between X and any polynomial functor applied to X which contains the roots of X=F(X).
+
+  This has led to the generation of a partial proof of our conjecture.
+
+  \begin{enumerate}
+    \item First, we must prove that X=P(X) + X implies X=n*P(X) + X.
+          This can be proven by induction.
+
+    \item Our base case is that X=0*P(X) + X.  This is obvious--any set
+          is isomorphic to itself.
+
+    \item If X=n*P(X) + X, then X=(n+1)*P(X) + X.
+    \begin{itemize}
+      \item X=n*P(X) + X implies X= n*P(X) + P(X) + X.
+
+      \item X=n*P(X) + P(X) + X = (n+1)*P(X) + X by the distributive property of cartesian products.
+    \end{itemize}
+
+    \item This is also true for negative values of n.
+
+    \item if X = n*P(X) + X where $n < 0$, this is logically equivalent
+    to saying that X + -n*P(X) = X.
+
+    \item This has just been proven.
+
+  \end{enumerate}
+
+\begin{enumerate}
+  \item We must now prove that if X=P(X) + X, then X=X*P(X) + X, i.e. the
+  same polynomial with an additional zero root.
+
+  \item This can be easily proven for all cases where P(X) has a non-zero constant term and an $X^n$ term where $n > 1$.
+
+  \item Whenever a strong isomorphism exists between X and $X^2 + P'(X)$ for an arbitrary P'(X), then $X = X*P(X) + X$.
+
+  \begin{itemize}
+    \item $X = X^2 + P'(X)$ implies $X = X*(P(X) + X) + P'(X)$
+
+    \item $X = X*(P(X) + X) + P'(X) = X*P(X) + X^2 + P'(X)$
+
+    \item $X = X*P(X) + X^2 + P'(X)$ implies $X = X*P(X) + X$
+
+  \end{itemize}
+
+  \item Now, we can show that whenever $X = P(X) + X$, and P(X) contains an $X^n$ term where $n > 1$ as well as a non-zero constant term, there exists a strong isomorphism between X and $X^2 + P'(X)$.
+
+  \begin{itemize}
+    \item This can be proven by induction.
+
+    \item The base case is when $P(X) = X^2 + 1 + P2(X)$ for any P2(X).
+    When P(X) has $X^2$, a strong isomorphism exists between X and $X^2 + P'(X)$.
+
+    \item Now we can show that whenever $P(X) = X^{n+1} + 1 + P3(X)$, a strong isomorphism exists between X and $X^n + 1 + P4(X)$ when $n >= 2$.
+
+    \item $X = X^{n+1} + 1 + P3(X)$ implies $X = (X^{n+1} + 1 + P3(X))*X^n + 1 + P3(X) = X^{2n+1} + X^n + X^n*P3(X) + 1 + P3(X)$.
+
+    \item This is a strong isomorphism between X and $X^n + 1 + P4(X)$ where $P4(X) = X^{2n+1} + X^n*P3(X) + P3(X)$
+
+    \item Therefore, whenever X = P(X) + X, and P(X) contains an $X^n$ term
+    where $n > 1$ as well as a non-zero constant term, there exists a strong isomorphism between X and some polynomial functor of X containing an $X^2$ term.
+  \end{itemize}
+
+  \item Therefore, whenever $X = P(X) + X$ and P(X) contains an $X^n$ term where $n > 1$ as well as a non-zero constant term, $X = X*P(X) + X$--the same polynomial with an additional zero root.
+
+\end{enumerate}
+
+We can now show that if $X=P(X) + X = X^n + X + 1 + P'(X)$ where $n > 1$, X is also isomorphic to $(X + r)*P(X) + X$ for any integer r.
+
+\begin{itemize}
+  \item $X = P(X) + X$ implies $X = X*P(X) + X$
+  \item $X = X*P(X) + X$ implies $X = X*P(X) + r*P(X) + X = (X + r)*P(X) + X$
+\end{itemize}
+
+\subsection{Comparison of Functors}
+
+In order to determine the minimal fixpoints of functors with negative coefficients, it is necessary to be able to compare functors.  Any minimal fixpoint of a functor F requires an isomorphism between X and F(X).  If F(X) has negative coefficients, this is really an isomorphism between X + F1(X) and F2(X), where F2(X) - F1(X) = F(X), and F1(X) is the product of the absolute value of all negative coefficients and their $X^n$ term.
+
+If X=F(X) has positive roots, it seems natural that the minimal fixpoint should be the smallest positive root of this polynomial, as this set will result in one or more possible isomorphisms between X and F(X).
+
+When we provide an isomorphism, $\alpha$, however, we do not always see that for any set Y and any function f from $G(Y)=Y+F1(Y)$ to $J(Y)=F2(Y)$, this results in a unique function, h, from X to Y that has the property $f(Gh(x)) = \alpha (Jh(x))$
+
+\textbf{Example. }
+  Take the functor F(X) = 2X - 1.  We may expect the initial algebra of this functor to be a set containing one element, as this would solve $X + 1=F(X) + 1$.  If this were the case, then we would want one of the two isomorphisms from $\mu F + 1$ to $2 \times \mu F$ to result in a unique h function for every F-algebra (Y, f).  We find that this is not the case, e.g. when $Y = \mu F$, and f is the isomorphism we did not choose for $\alpha$.
+
+\textbf{Conjecture. }
+  For any two functors G and J, the initial solution of these two functors together is a set X together with a \emph{finite} set of isomorphisms, $\alpha$, between G and J such that for any algebra (Y, f), where f is a function from G(Y) to J(Y), one of these isomorphisms will result in a unique h such that $f(Gh(x)) = \alpha (Jh(x))$.
+
+\textbf{Note. } In order for h to exist, Y must be non-empty.  This is solved when talking about initial solutions to regular functors because no algebra can be provided in this case: no function from F(Y) to Y will exist when Y is empty.  We must therefore define f as a function from the functor with the larger minimal fixpoint to the functor with the smaller minimal fixpoint.
+
+\subsection{Fixpoints of Polynomial Functors}
+
+If X is a fixpoint of a polynomial functor, F, then any polynomial functor, G, that maps all roots of F to roots of F will, when applied to X, also be a fixpoint of F.  This is obvious if our earlier conjecture about strong isomorphisms is true--as long as G maps all roots of F to roots of F, then F composed with G will at a minimum have all roots of F, so the roots of F composed with G will be a sub-multiset of the roots of F.
+
+\textbf{Note. } This is especially interesting in the case where F is a second-degree polynomial functor, and G is a polynomial that swaps the roots of F (i.e. maps the first root to the second and the second root to the first).  If this is the case, then not only is G(X) strongly isomorphic to F(G(X)) (meaning G(X) is a fixpoint of F, given that X is a fixpoint of F), but X is strongly isomorphic to G(G(X)).
+
+\indent It would be especially interesting to find that when we are talking specifically about the minimal fixpoint of F, that $\mu F$ is isomorphic to $G(\mu F)$.  This is not necessarily a result of the fact that $\mu F = F(\mu F)$, but it may be the case that a strong isomorphism between $G(\mu F)$ and $F(G(\mu F))$, if chosen correctly, will induce an isomorphism between $\mu F$ and $G(\mu F)$ because $\mu F$ is the initial algebra of F.  This would mean that $G(\mu F)$, when combined with this isomorphism and an isomorphism between $\mu F$ and $F(\mu F)$ is an initial solution to F.
+
+\indent A relatively simple example of this is $F(X)=X^2+2X+1$.  For this functor, a polynomial that swaps the complex roots is $G(X)=X^2$.  It is easily shown that for all X where X=F(X), G(X) = F(G(X)) -- G(X) is a fixpoint of F.  It is also easily shown that X = G(G(X)) -- G(G(X)) is X.  It is still an open question whether X is G(X).
+
 \end{document}
